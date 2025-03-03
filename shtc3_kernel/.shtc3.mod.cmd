@@ -1,0 +1,1 @@
+savedcmd_/home/master/Desktop/EEP522-EMB_REALTIME_SYS/shtc3_device-driver/shtc3.mod := printf '%s\n'   shtc3.o | awk '!x[$$0]++ { print("/home/master/Desktop/EEP522-EMB_REALTIME_SYS/shtc3_device-driver/"$$0) }' > /home/master/Desktop/EEP522-EMB_REALTIME_SYS/shtc3_device-driver/shtc3.mod

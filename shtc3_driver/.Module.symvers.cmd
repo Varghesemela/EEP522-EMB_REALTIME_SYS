@@ -1,0 +1,1 @@
+savedcmd_/home/master/Desktop/EEP522-EMB_REALTIME_SYS/shtc3_driver/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/master/Desktop/EEP522-EMB_REALTIME_SYS/shtc3_driver/Module.symvers -T /home/master/Desktop/EEP522-EMB_REALTIME_SYS/shtc3_driver/modules.order -i Module.symvers -e 

@@ -1,0 +1,1 @@
+savedcmd_/home/master/Desktop/EEP522-EMB_REALTIME_SYS/shtc3_device-driver/modules.order := {   echo /home/master/Desktop/EEP522-EMB_REALTIME_SYS/shtc3_device-driver/shtc3.o; :; } > /home/master/Desktop/EEP522-EMB_REALTIME_SYS/shtc3_device-driver/modules.order
