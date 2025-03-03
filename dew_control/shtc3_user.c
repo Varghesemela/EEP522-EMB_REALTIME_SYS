@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+<<<<<<< Updated upstream
+=======
+#include <unistd.h>
+#include <stdbool.h>
+>>>>>>> Stashed changes
 #include <math.h>
 #include "dewpoint.h"
 #include "shtc3_parser.h"
@@ -38,12 +43,21 @@ void adjust_fans(double dome_temp, double dew_point) {
     printf("Setting inlet fan duty cycle to %lu (%.1f%%)\n", inlet_duty, inlet_duty * 100.0 / PWM_PERIOD);
     printf("Setting exhaust fan duty cycle to %lu (%.1f%%)\n", exhaust_duty, exhaust_duty * 100.0 / PWM_PERIOD);
 
+<<<<<<< Updated upstream
     if (set_pwm_duty(INLET_PWM_PATH, inlet_duty) < 0) {
         fprintf(stderr, "Failed to set inlet fan PWM duty cycle.\n");
     }
     if (set_pwm_duty(EXHAUST_PWM_PATH, exhaust_duty) < 0) {
         fprintf(stderr, "Failed to set exhaust fan PWM duty cycle.\n");
     }
+=======
+    // if (set_pwm_duty(INLET_PWM_PATH, inlet_duty) < 0) {
+    //     fprintf(stderr, "Failed to set inlet fan PWM duty cycle.\n");
+    // }
+    // if (set_pwm_duty(EXHAUST_PWM_PATH, exhaust_duty) < 0) {
+    //     fprintf(stderr, "Failed to set exhaust fan PWM duty cycle.\n");
+    // }
+>>>>>>> Stashed changes
 }
 
 int main(void) {
@@ -51,6 +65,7 @@ int main(void) {
     int dome_temp_raw;
     double ambient_temp, ambient_hum;
     double dome_temp, dew_point;
+<<<<<<< Updated upstream
 
     /* Read ambient sensor data from /dev/shtc3 */
     if (read_sensor("/dev/shtc3", &ambient_temp_raw, &ambient_hum_raw) < 0) {
@@ -92,5 +107,53 @@ int main(void) {
    /* Adjust fan speeds based on sensor measurements */
     adjust_fans(dome_temp, dew_point);
 
+=======
+    while(true) {
+        /* Clear screen for a refreshed display */
+        printf("\033[H\033[J");
+        /* Read ambient sensor data from /dev/shtc3 */
+        if (read_sensor("/dev/shtc3", &ambient_temp_raw, &ambient_hum_raw) < 0) {
+            fprintf(stderr, "Error reading ambient sensor data.\n");
+            return EXIT_FAILURE;
+        }
+        /* Convert raw values to physical units */
+        ambient_temp = ambient_temp_raw / 100.0;
+        ambient_hum  = ambient_hum_raw / 100.0;
+
+        /* Compute dew point from ambient conditions */
+        dew_point = compute_dew_point(ambient_temp, ambient_hum);
+
+        /* Read dome sensor temperature from /dev/shtc3_dome.
+        * For the dome sensor, assume only temperature is needed.
+        */
+        if (read_sensor("/dev/shtc3_dome", &dome_temp_raw, NULL) < 0) {
+            fprintf(stderr, "Error reading dome sensor data.\n");
+            return EXIT_FAILURE;
+        }
+        dome_temp = dome_temp_raw / 100.0;
+
+        /* Print the measured values */
+        printf("Ambient Temperature: %.2f°C\n", ambient_temp);
+        printf("Ambient Humidity: %.2f%%\n", ambient_hum);
+        printf("Calculated Dew Point: %.2f°C\n", dew_point);
+        printf("Dome Temperature: %.2f°C\n", dome_temp);
+
+        /* Compare dome temperature with dew point.
+        * If the dome temperature is at or below the dew point,
+        * condensation on the dome lens is possible.
+        */
+        if (dome_temp <= dew_point) {
+            printf("Warning: Dome lens temperature is at or below the dew point. Condensation may occur.\n");
+        } else {
+            printf("Dome lens temperature is above the dew point. No condensation expected.\n");
+        }
+
+        /* Adjust fan speeds based on sensor measurements */
+        adjust_fans(dome_temp, dew_point);
+
+        /* Sleep for a desired interval (e.g., 5 seconds) before repeating the loop */
+        sleep(5);
+    }
+>>>>>>> Stashed changes
     return EXIT_SUCCESS;
 }
