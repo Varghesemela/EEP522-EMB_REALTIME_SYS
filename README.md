@@ -102,7 +102,15 @@ Below is the flow of implementation for the I2C sensor Driver for the 2 SHTC3 se
 - **Enclosure Effectiveness:**  
   The weatherproof enclosure has successfully shielded the hardware from outdoor elements during preliminary field tests. Its design not only protects the system but also ensures ease of maintenance and future upgrades.
 
-## 5. Future Scope
+## 5. Self-assessement
+
+In the previous milestones, I conducted a thorough characterization of the RPI 4 by addressing some insights to evaluate its hardware and software capabilities, such as identifying the SoC details, assessing memory performance and cache sizes, understanding the pin layout, and evaluating real-time response features like interrupt latency and context switch times. 
+
+I also investigated the board’s boot process, available software libraries, and power consumption under various loads. By writing C programs and using available documentation and hardware tools, I was able to benchmark performance metrics, test peripheral access using the kernal calls, and recognize areas needing further improvement. Thorugh this, I was able to understand if i could use the RPI4's heat dissipation for creating a warmer enclosure for the dewpoint effect.
+
+This detailed analysis has not only provided valuable insights into the board’s reliability and performance under different conditions but also helped to inform and guide future enhancements in our project.
+
+## 6. Future Scope
 
 While the current focus is on developing a high-quality night sky imaging system, the modular design opens the possibility for future enhancements. One potential future scope is the integration of a birdwatching module. This would allow the system to detect and record bird activity near nests, expanding its use cases to wildlife monitoring. Further development in this direction will involve additional sensor integration and software enhancements.
 
@@ -118,7 +126,7 @@ The project successfully meets most requirements, yet there remains potential fo
   - Investigating cloud-based storage and remote monitoring for data analysis.
   - Conceptualizing a dual-mode operation to support both astronomical imaging and wildlife monitoring.
 
-## 6. Conclusion
+## 7. Conclusion
 
 The Starry project represents a significant step forward in developing versatile, outdoor imaging systems using affordable and scalable technology like the Raspberry Pi. The current implementation has successfully achieved its primary objective of high-quality night sky imaging. With robust hardware testing and thoughtful design, the project is well-positioned for future enhancements such as birdwatching. The lessons learned from this phase will inform subsequent iterations and additional feature integrations.
 
@@ -132,7 +140,7 @@ The Starry project represents a significant step forward in developing versatile
   - Robust sensor integration with real-time data logging.
   - Custom enclosure design to protect and cool the electronics effectively.
 
-## 7. References
+## 8. References
 
 - [Raspberry Pi Documentation](https://www.raspberrypi.com/documentation/)  
 - [Camera Module - RPI HQ Camera](https://www.raspberrypi.com/documentation/accessories/camera.html)  
